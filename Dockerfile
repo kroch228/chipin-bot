@@ -2,11 +2,14 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY pyproject.toml .
+COPY pyproject.toml README.md ./
+COPY core/ core/
+COPY bot/ bot/
+COPY migrations/ migrations/
+
 RUN pip install --no-cache-dir .
 
-COPY . .
-
+COPY entrypoint.sh alembic.ini ./
 RUN chmod +x entrypoint.sh
 
 EXPOSE 8080
