@@ -31,7 +31,8 @@ dev = [
 [project.urls]
 Repository = "https://github.com/kroch228/chipin-bot"
 
-[tool.pytest.ini_options]
+[tool.hatch.build.targets.wheel]
+packages = ["core", "bot", "migrations"]
 asyncio_mode = "auto"
 testpaths = ["tests"]
 
