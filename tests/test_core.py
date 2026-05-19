@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-import pytest
+import pytest_asyncio
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 
 from core.models import Base
@@ -8,7 +8,7 @@ from core.repositories import GroupRepo, UserRepo
 from core.services import ExpenseService, compute_balances, compute_settlements
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 async def session():
     engine = create_async_engine("sqlite+aiosqlite:///:memory:")
     async with engine.begin() as conn:
